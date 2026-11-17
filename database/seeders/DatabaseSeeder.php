@@ -2,24 +2,37 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Student;
+use App\Models\Course;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $course1 = Course::create([
+            'name' => 'Introduction to Programming',
+            'code' => '4CS001',
+            'description' => 'Introduction to programming and problem solving.',
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $course2 = Course::create([
+            'name' => 'Fundamentals of Computing',
+            'code' => '4CS015',
+            'description' => 'Fundamentals of computing.',
+        ]);
+
+        $student = Student::create([
+            'name' => 'Kushal Gurung',
+            'email' => 'Kushal@gmail.com',
+            'phone' => '99244325',
+            'address' => 'Kathmandu',
+            'date_of_birth' => '2000-01-01',
+        ]);
+
+        $student->courses()->attach([
+            $course1->id,
+            $course2->id,
         ]);
     }
 }
