@@ -8,12 +8,18 @@ class Course extends Model
 {
     protected $fillable = [
         'name',
-        'code',
         'description',
+        'duration',
+        'fee',
+        'difficulty',
+        'is_active',
     ];
 
-    public function students()
+    protected function casts(): array
     {
-        return $this->belongsToMany(Student::class);
+        return [
+            'is_active' => 'boolean',
+            'fee' => 'decimal:2',
+        ];
     }
 }

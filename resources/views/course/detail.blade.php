@@ -8,27 +8,34 @@
     </p>
 
     <p>
-        <strong>Course Name:</strong>
+        <strong>Name:</strong>
         {{ $course->name }}
     </p>
 
     <p>
-        <strong>Course Code:</strong>
-        {{ $course->code }}
+        <strong>Description:</strong>
+        {{ $course->description }}
     </p>
 
     <p>
-        <strong>Description:</strong>
-        {{ $course->description ?? 'No description available' }}
+        <strong>Duration:</strong>
+        {{ $course->duration }} weeks
     </p>
 
-    <h2>Enrolled Students</h2>
+    <p>
+        <strong>Fee:</strong>
+        {{ number_format($course->fee, 2) }}
+    </p>
 
-    @forelse($course->students as $student)
-        <p>{{ $student->name }}</p>
-    @empty
-        <p>No students enrolled in this course.</p>
-    @endforelse
+    <p>
+        <strong>Difficulty:</strong>
+        {{ $course->difficulty }}
+    </p>
+
+    <p>
+        <strong>Active:</strong>
+        {{ $course->is_active ? 'Yes' : 'No' }}
+    </p>
 
     <a href="{{ route('courses.edit', $course) }}" class="btn">
         Edit Course

@@ -5,7 +5,7 @@ use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('students.index');
+    return view('welcome');
 });
 
 Route::resource('students', StudentController::class);

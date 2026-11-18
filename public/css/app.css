@@ -20,7 +20,7 @@ body {
 }
 
 .navbar a {
-    color: #ffffff;
+    color: white;
     text-decoration: none;
     margin-left: 20px;
 }
@@ -32,7 +32,7 @@ body {
 }
 
 .navbar a.active {
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid white;
 }
 
 .container {
@@ -45,7 +45,7 @@ body {
 
 .footer {
     background: #f3f4f6;
-    color: #555555;
+    color: #555;
     text-align: center;
     padding: 16px;
     font-size: 14px;
@@ -53,7 +53,7 @@ body {
 
 .btn {
     background: #2563eb;
-    color: #ffffff;
+    color: white;
     border: 0;
     border-radius: 4px;
     padding: 8px 14px;
@@ -80,7 +80,7 @@ table {
 }
 
 th, td {
-    border: 1px solid #cccccc;
+    border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
 }
@@ -94,10 +94,7 @@ th, td {
     margin-bottom: 4px;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="date"],
-.form-group input[type="number"],
+.form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;

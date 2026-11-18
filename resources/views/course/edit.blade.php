@@ -5,6 +5,7 @@
     <form action="{{ route('courses.update', $course) }}" method="POST">
 
         @csrf
+
         @method('PUT')
 
         @include('course._form')

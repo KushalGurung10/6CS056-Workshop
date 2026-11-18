@@ -22,9 +22,9 @@ class CourseController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate($this->rules());
-
-        $course = Course::create($validated);
+        $course = Course::create(
+            $request->validate($this->rules())
+        );
 
         return redirect()
             ->route('courses.index')
@@ -33,8 +33,6 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        $course->load('students');
-
         return view('course.detail', [
             'course' => $course,
         ]);
@@ -49,9 +47,9 @@ class CourseController extends Controller
 
     public function update(Request $request, Course $course)
     {
-        $validated = $request->validate($this->rules($course));
-
-        $course->update($validated);
+        $course->update(
+            $request->validate($this->rules())
+        );
 
         return redirect()
             ->route('courses.show', $course)
@@ -60,8 +58,6 @@ class CourseController extends Controller
 
     public function destroy(Course $course)
     {
-        $course->students()->detach();
-
         $course->delete();
 
         return redirect()
@@ -69,19 +65,18 @@ class CourseController extends Controller
             ->with('success', 'Course deleted successfully!');
     }
 
-    private function rules(?Course $course = null): array
+    private function rules(): array
     {
         return [
             'name' => 'required|string|max:255',
-
-            'code' => [
-                'required',
-                'string',
-                'max:50',
-                Rule::unique('courses')->ignore($course?->id),
-            ],
-
             'description' => 'nullable|string',
+            'duration' => 'required|integer|min:1',
+            'fee' => 'required|numeric|min:0',
+            'difficulty' => [
+                'required',
+                Rule::in(['Easy', 'Medium', 'Hard']),
+            ],
+            'is_active' => 'boolean',
         ];
     }
 }
