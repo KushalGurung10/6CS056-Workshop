@@ -1,26 +1,23 @@
 @php
-    $course = $course ?? new \App\Models\Course(['is_active' => true]);
+$course = $course ?? new \App\Models\Course(['is_active' => true]);
 @endphp
 
 <x-form-input
     name="name"
     label="Name"
-    :value="$course->name"
-/>
+    :value="$course->name" />
 
 <x-form-textarea
     name="description"
     label="Description"
-    :value="$course->description"
-/>
+    :value="$course->description" />
 
 <x-form-input
     name="duration"
     label="Duration (weeks)"
     type="number"
     min="1"
-    :value="$course->duration"
-/>
+    :value="$course->duration" />
 
 <x-form-input
     name="fee"
@@ -28,36 +25,26 @@
     type="number"
     step="0.01"
     min="0"
-    :value="$course->fee"
-/>
+    :value="$course->fee" />
 
 <div class="form-group">
 
-    <label for="difficulty">
-        Difficulty
-    </label>
+    <label for="difficulty">Difficulty</label>
 
     <select id="difficulty" name="difficulty">
 
         @foreach(['Easy', 'Medium', 'Hard'] as $level)
 
-            <option
-                value="{{ $level }}"
-                @selected(old('difficulty', $course->difficulty) === $level)
-            >
-                {{ $level }}
-            </option>
+        <option value="{{ $level }}" @selected(old('difficulty', $course->difficulty) === $level)>
+            {{ $level }}
+        </option>
 
         @endforeach
 
     </select>
 
     @error('difficulty')
-
-        <p class="error">
-            {{ $message }}
-        </p>
-
+    <p class="error">{{ $message }}</p>
     @enderror
 
 </div>
@@ -74,8 +61,6 @@
         @checked(old('is_active', $course->is_active))
     >
 
-    <label for="is_active">
-        Active
-    </label>
+    <label for="is_active">Active</label>
 
 </div>

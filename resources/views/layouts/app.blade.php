@@ -1,5 +1,3 @@
-@props(['title' => 'Home'])
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $title }} | Training Institute</title>
+    <title>@yield('title', 'Home') | Training Institute</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -17,17 +15,17 @@
 
 <body>
 
-    <x-navbar />
+    @include('partials.navbar')
 
     <main class="container">
 
         <x-alert />
 
-        {{ $slot }}
+        @yield('content')
 
     </main>
 
-    <x-footer />
+    @include('partials.footer')
 
 </body>
 

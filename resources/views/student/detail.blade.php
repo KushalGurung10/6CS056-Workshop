@@ -1,48 +1,52 @@
-<x-layouts.app title="Student Details">
+@extends('layouts.app')
 
-    <h1>Student Details</h1>
+@section('title', 'Student Details')
 
-    <p>
-        <strong>ID:</strong>
-        {{ $student->id }}
-    </p>
+@section('content')
 
-    <p>
-        <strong>Name:</strong>
-        {{ $student->name }}
-    </p>
+<h1>Student Details</h1>
 
-    <p>
-        <strong>Email:</strong>
-        {{ $student->email }}
-    </p>
+<p>
+    <strong>ID:</strong>
+    {{ $student->id }}
+</p>
 
-    <p>
-        <strong>Phone:</strong>
-        {{ $student->phone }}
-    </p>
+<p>
+    <strong>Name:</strong>
+    {{ $student->name }}
+</p>
 
-    <p>
-        <strong>Address:</strong>
-        {{ $student->address }}
-    </p>
+<p>
+    <strong>Email:</strong>
+    {{ $student->email }}
+</p>
 
-    <p>
-        <strong>Date of Birth:</strong>
-        {{ $student->date_of_birth?->format('d M Y') }}
-    </p>
+<p>
+    <strong>Phone:</strong>
+    {{ $student->phone }}
+</p>
 
-    <p>
-        <strong>Age:</strong>
-        {{ $student->age ?? 'Not available' }}
-    </p>
+<p>
+    <strong>Address:</strong>
+    {{ $student->address }}
+</p>
 
-    <a href="{{ route('students.edit', $student) }}" class="btn">
-        Edit Student
-    </a>
+<p>
+    <strong>Date of Birth:</strong>
+    {{ $student->date_of_birth?->format('d M Y') }}
+</p>
 
-    <a href="{{ route('students.index') }}">
-        Back to Students
-    </a>
+<p>
+    <strong>Age:</strong>
+    {{ $student->age ?? 'Not available' }}
+</p>
 
-</x-layouts.app>
+<a href="{{ route('students.edit', $student) }}" class="btn">
+    Edit Student
+</a>
+
+<a href="{{ route('students.index') }}">
+    Back to Students
+</a>
+
+@endsection

@@ -1,71 +1,74 @@
-<x-layouts.app title="Students">
+@extends('layouts.app')
 
-    <h1>Students</h1>
+@section('title', 'Students')
 
-    <a href="{{ route('students.create') }}" class="btn">
-        Create Student
-    </a>
+@section('content')
 
-    <table>
+<h1>Students</h1>
 
-        <thead>
+<a href="{{ route('students.create') }}" class="btn">
+    Create Student
+</a>
 
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Actions</th>
-            </tr>
+<table>
 
-        </thead>
+    <thead>
 
-        <tbody>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
 
-            @forelse($students as $student)
+    </thead>
 
-                <tr>
+    <tbody>
 
-                    <td>{{ $student->id }}</td>
+        @forelse($students as $student)
 
-                    <td>{{ $student->name }}</td>
+        <tr>
 
-                    <td>{{ $student->email }}</td>
+            <td>{{ $student->id }}</td>
 
-                    <td>{{ $student->phone }}</td>
+            <td>{{ $student->name }}</td>
 
-                    <td>
+            <td>{{ $student->email }}</td>
 
-                        <a href="{{ route('students.show', $student) }}">
-                            View
-                        </a>
+            <td>{{ $student->phone }}</td>
 
-                        <a href="{{ route('students.edit', $student) }}">
-                            Edit
-                        </a>
+            <td>
 
-                        <x-delete-form
-                            :action="route('students.destroy', $student)"
-                        />
+                <a href="{{ route('students.show', $student) }}">
+                    View
+                </a>
 
-                    </td>
+                <a href="{{ route('students.edit', $student) }}">
+                    Edit
+                </a>
 
-                </tr>
+                <x-delete-form
+                    :action="route('students.destroy', $student)" />
 
-            @empty
+            </td>
 
-                <tr>
+        </tr>
 
-                    <td colspan="5">
-                        No students found.
-                    </td>
+        @empty
 
-                </tr>
+        <tr>
 
-            @endforelse
+            <td colspan="5">
+                No students found.
+            </td>
 
-        </tbody>
+        </tr>
 
-    </table>
+        @endforelse
 
-</x-layouts.app>
+    </tbody>
+
+</table>
+
+@endsection
